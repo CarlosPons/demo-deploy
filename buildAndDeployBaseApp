@@ -1,0 +1,15 @@
+#!/bin/bash
+
+home="$PWD"
+
+echo ""
+echo "DELETE OLD DEPLOY (CORDOVA)"
+echo ""
+rm -rfv $home/cordova/recovery-mobile/www/
+
+echo ""
+echo "DEPLOY NEW FILES (COPY BASE APP INTO CORDOVA)"
+echo ""
+cp -a $home/baseApp $home/cordova/recovery-mobile/www
+
+cd $home

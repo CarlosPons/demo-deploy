@@ -1,0 +1,17 @@
+#!/bin/bash
+
+home="$PWD"
+
+echo BUILD VUE App
+cd $home/recovery-mobile-webapp && npm run build
+
+echo DELETE OLD DEPLOY
+cd $home/cordova/recovery-mobile && rm -rfv www/
+
+echo COPY FILES
+cp -a $home/recovery-mobile-webapp/dist $home/cordova/recovery-mobile/www
+
+echo FIX PATH
+sed -i -e 's=/static=static=g' $home/cordova/recovery-mobile/www/index.html
+
+cd $home
